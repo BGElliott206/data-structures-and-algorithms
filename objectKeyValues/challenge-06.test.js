@@ -1,5 +1,7 @@
 'use strict';
 
+import { objectExpression } from "@babel/types";
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1
 
@@ -71,9 +73,13 @@ let characters = [
 
 const getHouses = (arr) => {
   let houses = [];
-  // Solution code here...
+  arr.forEach(element => {
+    houses.push(element.house);
+  })
   return houses;
 };
+
+getHouses(characters);
 
 /*------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -88,7 +94,15 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
+  let hasChildren = false
+  arr.forEach(element=>{
+    if(element.name === character){
+      if(Object.values(element)[2].length){
+        hasChildren=true;
+      }
+    }
+  })
+  return hasChildren;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -100,8 +114,17 @@ The input and output of this function are the same as the input and output from 
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenEntries = (arr, character) => {
-  // Solution code here...
+  let hasChildren = false;
+  arr.forEach(element=>){
+    if(objectExpression.entries(element)[0][1] === character )}
+    if(objectExpression.entries(element)[2][1].length){
+      hasChildren=true;
+    }
+  }
+})
+return hasChildren;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -110,7 +133,21 @@ Write a function named totalCharacters that takes in an array and returns the nu
 ------------------------------------------------------------------------------------------------ */
 
 const totalCharacters = (arr) => {
-  // Solution code here...
+  let charCount = 0;
+  arr.forEach(element=>{
+    if(Object.entries(element)[0][1]){
+      charCount++;
+    }
+    if(Object.entries(element)[1][1]){
+      charCount++;
+    }
+    if(Object.entries(element)[2][1]){
+      Object.entries(element)[2][1].forEach(child=>{
+        charCount++;
+      })
+    }
+  })
+  return charCount
 };
 
 /* ------------------------------------------------------------------------------------------------
