@@ -88,11 +88,11 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (str) => {
-  // return arr.split('').reduce((acc,val) =>{
-   //   ;
-  //}, '');
-
-//};
+  return str.split('')
+    .reduce((acc, char) => {
+      return char + acc;
+    }, '');
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -145,11 +145,11 @@ const characters = [
 
 const countNumberOfChildren = (arr) => {
   let numKids = arr.reduce((acc, val, idx)=>{
-      if(val.children){
-          return acc + val.children.length;
-      }else{
-          return acc;
-      }
+    if(val.children){
+      return acc + val.children.length;
+    }else{
+      return acc;
+    }
   }, 0);
   return numKids;
 };
@@ -164,6 +164,7 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 
 const calculateAverage = (arr) => {
   // Solution code here...
+  return arr.reduce((a, b) => a + b, 0) / arr.length;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -185,6 +186,12 @@ const isPrime = (value) => {
 
 const countPrimeNumbers = (arr) => {
   // Solution code here...
+  return arr.reduce((acc, value) => {
+    if (isPrime(value) === false)
+      return acc;
+    else
+      return ++acc;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
